@@ -10,16 +10,18 @@
 			if (id === 0) return;
 
 			let ch = chartArray.splice(id, 1)[0];
-			/* chartArray.splice(id-1, 0, ch); */
-			chartArray = [ch, ...chartArray];
+			chartArray.splice(id-1, 0, ch);
+			chartArray = chartArray;
+			/* chartArray = [ch, ...chartArray]; */
 			console.log(chartArray);
 		}
 		else if (dir === 'right') {
 			if (id === chartArray.length - 1) return;
 
 			let ch = chartArray.splice(id, 1)[0];
-			/* chartArray = chartArray.splice(id+1, 0, ch); */
-			chartArray = [...chartArray, ch];
+			chartArray.splice(id+1, 0, ch);
+			chartArray = chartArray;
+			/* chartArray = [...chartArray, ch]; */
 			console.log(chartArray);
 		}
 
@@ -34,10 +36,7 @@
 		{#each chartArray as chart, i }
 			<BarChart
 				id={i}
-				title={chart.title}
-				labels={chart.labels}
-				datasets={chart.datasets}
-				options={chart.options}
+				data={chart}
 				{handleMove}
 			/>
 		{/each}
